@@ -1,4 +1,6 @@
-# netto
+# netto 
+[![Build Status](https://travis-ci.org/aerze/netto.svg?branch=master)](https://travis-ci.org/aerze/netto)
+
 ネット.js a small helper library for xhr in the browser or Node.js.
 It is UMD compatible meaning you can use CommonJS/Node.js, AMD, or browser globals.
 
@@ -31,4 +33,10 @@ net.get('/posts/1', log);
 //   reprehenderit molestiae ut ut quas totam
 //   nostrum rerum est autem sunt rem eveniet architecto"
 // }
+```
+
+To test
+In the /netto directory
+```bash
+npm install && npm test
 ```
