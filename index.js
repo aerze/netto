@@ -47,6 +47,7 @@
         },
 
         node: function (type, path, data, callback) {
+            var http = require('http');
             data = data || '';
             data = (typeof data === 'object') ? JSON.stringify(data) : data;
             callback = callback || 
@@ -54,7 +55,6 @@
                 if (err) throw err;
                 else console.log(res);
             };
-
             var options= {
                 hostname: (!!this.root) ? this.root : 'localhost',
                 path: path,
@@ -62,13 +62,21 @@
             };
 
             var body = '';
-            var req = require('http').request(options, function (res) {
+            var req = http.request(options, function (res) {
                 res.setEncoding('utf8');
                 res.on('data', function (chunk) {
                     body += chunk;
                 });
                 res.on('end', function () {
-                    callback(null, body);
+                    if (res.statusCode === 204) callback(null, JSON.stringify({status: res.statusCode, text: res.statusMessage}));
+                    else if (res.statusCode === 200) callback(null, body);
+                    else {
+                        var err = new Error('HTTP Request Failed:: ' + res.statusCode + ' ' + res.statusMessage);
+                        err.status = res.statusCode;
+                        err.statusText = res.statusMessage;
+                        err.req = res;
+                        callback(err, null);
+                    }
                 });
             });
 
