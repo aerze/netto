@@ -1,0 +1,24 @@
+{
+  "name": "netto",
+  "version": "1.0.0",
+  "description": "ネット.js a small helper library for xhr in the browser.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aerze/netto.git"
+  },
+  "keywords": [
+    "XHR",
+    "xhr",
+    "net"
+  ],
+  "author": "Gus Suarez <gus@mythril.co>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aerze/netto/issues"
+  },
+  "homepage": "https://github.com/aerze/netto"
+}
